@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE = "https://travel-advisory-map-api.onrender.com/";
+const API_BASE = "https://travel-advisory-map-api.onrender.com";
 
 export async function getAllSummaries()
 {
