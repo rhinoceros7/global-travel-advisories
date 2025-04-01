@@ -7,7 +7,7 @@ export default function ThemeToggle()
     return (
         <button
             onClick={toggleTheme}
-            className="fixed bottom-4 left-4 z-[1001] px-3 py-1 bg-gray-300 dark:bg-gray-800 text-black dark:text-white rounded shadow"
+            className="fixed bottom-4 left-3 z-[1001] px-3 py-1 bg-gray-300 dark:bg-gray-800 text-black dark:text-white rounded shadow"
         >
             {theme === "dark" ? "Light Mode" : "Dark Mode"}
         </button>

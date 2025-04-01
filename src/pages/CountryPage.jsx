@@ -4,6 +4,7 @@ import { getAllSummaries } from "../api/advisoryService";
 import { countryToISO } from "../data/countryCodeMap";
 import ThemeToggle from "../components/ThemeToggle.jsx";
 import CountrySearch from "../components/CountrySearch.jsx";
+import BrandingFooter from "../components/Footer.jsx";
 
 export default function CountryPage()
 {
@@ -51,6 +52,7 @@ export default function CountryPage()
         <div className="min-h-screen w-full bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
         <div className="p-6 max-w-4xl mx-auto text-gray-900 dark:text-white">
             <ThemeToggle />
+            <BrandingFooter />
             <CountrySearch summaries={allSummaries} />
             <button
                 onClick={() => navigate('/')}
