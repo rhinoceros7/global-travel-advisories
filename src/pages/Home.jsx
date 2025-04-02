@@ -1,9 +1,21 @@
 import MapView from "../components/MapView.jsx";
+import { Helmet } from "react-helmet";
 
 function Home()
 {
     return (
         <div className="relative">
+            <Helmet>
+                <title>Global Travel Advisories</title>
+                <meta
+                    name="description"
+                    content="Explore the latest travel advisories, risk levels, and entry rules for 200+ countries using our interactive global map powered by trusted government sources."
+                />
+                <meta property="og:title" content="Global Travel Advisories" />
+                <meta property="og:description" content="Stay informed with safety info, visa requirements, and travel warnings across the globe." />
+                <meta property="og:url" content="https://globaltraveladvisories.com/" />
+            </Helmet>
+
             <div className="sr-only">
                 <h1>Global Travel Advisories – Safety Info for 200+ Countries</h1>
                 <p>
