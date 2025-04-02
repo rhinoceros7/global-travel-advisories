@@ -76,9 +76,10 @@ export default function CountryPage()
                 </div>
 
                 {/* Search bar */}
-                <div className="static mt-16 mb-4 px-2 w-[95%] max-w-xs z-[999] sm:absolute sm:top-3 sm:left-12 sm:translate-x-0 sm:mt-0 sm:mb-0 sm:px-0">
-                    <CountrySearch summaries={allSummaries} />
-                </div>
+                <CountrySearch
+                    summaries={allSummaries}
+                    positionClass="static mt-16 mb-4 px-2 w-[95%] max-w-xs z-[999] sm:absolute sm:top-3 sm:left-12 sm:translate-x-0 sm:mt-0 sm:mb-0 sm:px-0"
+                />
             </div>
 
                 {summary ? (

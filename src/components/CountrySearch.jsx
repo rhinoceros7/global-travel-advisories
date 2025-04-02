@@ -2,7 +2,7 @@ import {useState, useMemo, useEffect, useRef} from "react";
 import { useNavigate } from "react-router-dom";
 import Fuse from "fuse.js";
 
-export default function CountrySearch({ summaries })
+export default function CountrySearch({ summaries, positionClass })
 {
     const [query, setQuery] = useState("");
     const [filtered, setFiltered] = useState([]);
@@ -75,9 +75,8 @@ export default function CountrySearch({ summaries })
     }, [highlightedIndex]);
 
     return (
-        <div className="absolute top-3 left-1/2 -translate-x-1/2 px-2 w-[95%] max-w-xs z-[999] sm:left-12 sm:translate-x-0 sm:px-0">
-            <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white
-                            p-2.5 shadow-xl rounded-xl border border-gray-300 dark:border-gray-700 text-center">
+        <div className={positionClass ? positionClass : "absolute top-3 left-1/2 -translate-x-1/2 px-2 w-[95%] max-w-xs z-[999] sm:left-12 sm:translate-x-0 sm:px-0"}>
+            <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white p-2.5 shadow-xl rounded-xl border border-gray-300 dark:border-gray-700 text-center">
                 <form onSubmit={(e) => e.preventDefault()}>
                     <input
                         type="text"
@@ -88,7 +87,6 @@ export default function CountrySearch({ summaries })
                         className="w-full px-3 py-2 rounded-md bg-gray-100 dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                 </form>
-
                 {filtered.map((name, idx) => (
                     <li
                         key={idx}
