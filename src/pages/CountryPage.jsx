@@ -54,15 +54,21 @@ export default function CountryPage()
             <ThemeToggle />
             <BrandingFooter />
             <CountrySearch summaries={allSummaries} />
-            <button
-                onClick={() => navigate('/')}
-                className="mb-4 flex items-center gap-2 px-3 py-2 w-full max-w-xs sm:w-fit bg-blue-500 ..."
-            >
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M19 12H5M12 19l-7-7 7-7"/>
-                </svg>
-                Back to Map
-            </button>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+                <button
+                    onClick={() => navigate('/')}
+                    className="flex items-center gap-2 px-3 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors w-full sm:w-fit"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    Back to Map
+                </button>
+
+                <div className="w-full sm:w-fit">
+                    <CountrySearch summaries={allSummaries} />
+                </div>
+            </div>
 
             {/* Country name + flag */}
             <div className="flex items-center gap-3 mb-2">
