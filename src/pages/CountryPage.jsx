@@ -5,6 +5,7 @@ import { countryToISO } from "../data/countryCodeMap";
 import ThemeToggle from "../components/ThemeToggle.jsx";
 import CountrySearch from "../components/CountrySearch.jsx";
 import BrandingFooter from "../components/Footer.jsx";
+import { Helmet } from "react-helmet";
 
 export default function CountryPage()
 {
@@ -51,6 +52,33 @@ export default function CountryPage()
     return (
         <div className="min-h-screen w-full bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
         <div className="p-6 max-w-4xl mx-auto text-gray-900 dark:text-white">
+            <Helmet>
+                <title>{`Travel Advisory for ${countryName}`}</title>
+                <meta
+                    name="description"
+                    content={
+                        summary
+                            ? `Stay informed about travel safety in ${countryName}. ${summary.risk_label} risk level. Visa: ${summary.entry_requirements.visa_required ? "Required" : "Not required"}. Borders open: ${summary.entry_requirements.borders_open ? "Yes" : "No"}.`
+                            : `Get the latest travel information and safety advisories for ${countryName}.`
+                    }
+                />
+                <meta property="og:title" content={`Travel Advisory for ${countryName}`} />
+                <meta property="og:description" content="Explore safety info, travel warnings, and entry restrictions." />
+                <meta property="og:url" content={`https://globaltraveladvisories.com/${countrySlug}`} />
+                <script type="application/ld+json">
+                    {`
+                        {
+                          "@context": "https://schema.org",
+                          "@type": "TravelDestination",
+                          "name": "${countryName}",
+                          "url": "https://globaltraveladvisories.com/${countrySlug}",
+                          "description": "Travel advisory for ${countryName}. Risk level: ${summary?.risk_label}. Visa required: ${summary?.entry_requirements?.visa_required ? "Yes" : "No"}.",
+                          "image": "https://flagcdn.com/h120/${countryToISO[countryName.trim()]}.png"
+                        }
+                    `}
+                </script>
+            </Helmet>
+
             <ThemeToggle />
             <BrandingFooter />
             <button
@@ -72,12 +100,15 @@ export default function CountryPage()
             {/* Country name + flag */}
             <div className="mb-2">
                 <div className="flex items-center gap-3 mb-2">
-                    {countryToISO[countryName?.trim()] && (
-                        <img
-                            src={`https://flagcdn.com/h40/${countryToISO[countryName.trim()]}.png`}
-                            alt={`${countryName} flag`}
-                        />
-                    )}
+                    {countryToISO[countryName?.trim()] &&
+                        countryToISO[countryName.trim()].split(",").map((code) => (
+                            <img
+                                key={code.trim()}
+                                src={`https://flagcdn.com/h40/${code.trim()}.png`}
+                                alt={`${countryName} flag (${code.trim().toUpperCase()})`}
+                                className="h-6 inline-block mr-2 rounded-sm"
+                            />
+                        ))}
                     <h1 className="text-3xl font-bold">{countryName}</h1>
                 </div>
             </div>

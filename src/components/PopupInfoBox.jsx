@@ -2,21 +2,21 @@ import {countryToISO} from "../data/countryCodeMap.js";
 
 export default function PopupInfoBox({ hoveredCountry, selectedCountry, navigate })
 {
-    const isoCode = countryToISO[hoveredCountry?.country?.trim()];
-
     return (
         <div className="absolute top-3 right-5 bg-white dark:bg-gray-900 text-gray-900 dark:text-white
               p-2.5 shadow-xl rounded-xl max-w-xs w-[90%] z-[999] border border-gray-300 dark:border-gray-700 text-center">
 
             {/* Flag + Country */}
             <div className="flex justify-center items-center gap-2 mb-2">
-                {countryToISO[hoveredCountry.country?.trim()] && (
-                    <img
-                        src={`https://flagcdn.com/h20/${countryToISO[hoveredCountry.country.trim()]}.png`}
-                        alt={`${hoveredCountry.country} flag`}
-                        className="h-5 w-auto rounded-sm"
-                    />
-                )}
+                {countryToISO[hoveredCountry.country?.trim()] &&
+                    countryToISO[hoveredCountry.country.trim()].split(",").map((code) => (
+                        <img
+                            key={code.trim()}
+                            src={`https://flagcdn.com/h20/${code.trim()}.png`}
+                            alt={`${hoveredCountry.country} flag (${code.trim().toUpperCase()})`}
+                            className="h-5 w-auto rounded-sm mr-1"
+                        />
+                    ))}
                 <h2 className="text-2xl font-semibold">
                     {hoveredCountry.country || selectedCountry || "Unknown Region"}
                 </h2>
