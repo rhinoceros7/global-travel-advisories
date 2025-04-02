@@ -53,35 +53,35 @@ export default function CountryPage()
         <div className="p-6 max-w-4xl mx-auto text-gray-900 dark:text-white">
             <ThemeToggle />
             <BrandingFooter />
-            <CountrySearch summaries={allSummaries} />
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
-                <button
-                    onClick={() => navigate('/')}
-                    className="flex items-center gap-2 px-3 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors w-full sm:w-fit"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M19 12H5M12 19l-7-7 7-7"/>
-                    </svg>
-                    Back to Map
-                </button>
+            <button
+                onClick={() => navigate('/')}
+                className="mb-4 flex items-center gap-2 px-3 py-2 w-full max-w-xs sm:w-fit bg-blue-500 ..."
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Map
+            </button>
 
-                <div className="w-full sm:w-fit">
+            {/* Country name + flag */}
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
+                <div className="flex items-center gap-3">
+                    {countryToISO[countryName?.trim()] && (
+                        <img
+                            src={`https://flagcdn.com/h40/${countryToISO[countryName.trim()]}.png`}
+                            alt={`${countryName} flag`}
+                        />
+                    )}
+                    <h1 className="text-3xl font-bold">{countryName}</h1>
+                </div>
+
+                {/* Search bar */}
+                <div className="w-full sm:w-auto">
                     <CountrySearch summaries={allSummaries} />
                 </div>
             </div>
 
-            {/* Country name + flag */}
-            <div className="flex items-center gap-3 mb-2">
-                {countryToISO[countryName?.trim()] && (
-                    <img
-                        src={`https://flagcdn.com/h40/${countryToISO[countryName.trim()]}.png`}
-                        alt={`${countryName} flag`}
-                    />
-                )}
-                <h1 className="text-3xl font-bold mb-2">{countryName}</h1>
-            </div>
-
-            {summary ? (
+                {summary ? (
                 <>
                     {/* Risk badge */}
                     <span className={`inline-block text font-semibold px-3 py-1 rounded-full mb-4 ${
