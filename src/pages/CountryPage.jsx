@@ -66,7 +66,7 @@ export default function CountryPage()
             {/* Search bar */}
             <CountrySearch
                 summaries={allSummaries}
-                positionClass="static mt-16 mb-4 px-2 w-[95%] max-w-xs z-[999] sm:absolute sm:top-3 sm:left-12 sm:translate-x-0 sm:mt-0 sm:mb-0 sm:px-0"
+                positionClass="static mt-4 mb-2 px-1 w-[95%] max-w-xs z-[999] sm:absolute sm:top-3 sm:left-12 sm:translate-x-0 sm:mt-0 sm:mb-0 sm:px-0"
             />
 
             {/* Country name + flag */}
