@@ -63,6 +63,12 @@ export default function CountryPage()
                 Back to Map
             </button>
 
+            {/* Search bar */}
+            <CountrySearch
+                summaries={allSummaries}
+                positionClass="static mt-16 mb-4 px-2 w-[95%] max-w-xs z-[999] sm:absolute sm:top-3 sm:left-12 sm:translate-x-0 sm:mt-0 sm:mb-0 sm:px-0"
+            />
+
             {/* Country name + flag */}
             <div className="mb-2">
                 <div className="flex items-center gap-3 mb-2">
@@ -74,12 +80,6 @@ export default function CountryPage()
                     )}
                     <h1 className="text-3xl font-bold">{countryName}</h1>
                 </div>
-
-                {/* Search bar */}
-                <CountrySearch
-                    summaries={allSummaries}
-                    positionClass="static mt-16 mb-4 px-2 w-[95%] max-w-xs z-[999] sm:absolute sm:top-3 sm:left-12 sm:translate-x-0 sm:mt-0 sm:mb-0 sm:px-0"
-                />
             </div>
 
                 {summary ? (
