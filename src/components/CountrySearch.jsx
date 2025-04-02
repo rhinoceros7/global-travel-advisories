@@ -75,7 +75,7 @@ export default function CountrySearch({ summaries })
     }, [highlightedIndex]);
 
     return (
-        <div className="absolute top-3 left-12 z-[999] w-[90%] max-w-xs">
+        <div className="absolute top-3 left-1/2 -translate-x-1/2 px-2 w-[95%] max-w-xs z-[999] sm:left-12 sm:translate-x-0 sm:px-0">
             <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white
                             p-2.5 shadow-xl rounded-xl border border-gray-300 dark:border-gray-700 text-center">
                 <form onSubmit={(e) => e.preventDefault()}>
