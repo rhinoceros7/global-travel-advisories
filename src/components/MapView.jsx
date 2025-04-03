@@ -97,6 +97,7 @@ function MapView()
                     hoveredCountry={hoveredCountry}
                     selectedCountry={selectedCountry}
                     navigate={navigate}
+                    summaries={summaries}
                 />
             )}
 

@@ -17,10 +17,16 @@ export function VectorTileLayer({ summaries, setHoveredCountry, setSelectedCount
         default: "#9e9e9e"
     };
 
-    // Use the country name as-is.
+    // Fix the misnaming of Hong Kong.
+    const normalizeAdminName = (name) => {
+        if (name === "Hong Kong S.A.R.") return "Hong Kong";
+        return name;
+    };
+
     const getRiskLevel = (adminName) => {
+        const normalizedName = normalizeAdminName(adminName);
         const match = summaries.find(
-            (c) => c.country === adminName
+            (c) => c.country === normalizedName
         );
         return match?.overall_risk_level || "default";
     };
