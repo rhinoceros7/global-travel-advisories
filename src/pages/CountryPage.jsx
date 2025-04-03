@@ -15,6 +15,17 @@ export default function CountryPage()
     const [ countryName, setCountryName ] = useState(null);
     const navigate = useNavigate();
 
+    // Function to shuffle "Other Popular Countries" section of the country page.
+    function shuffleArray(array)
+    {
+        const arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
     useEffect(() => {
         getAllSummaries().then((all) => {
             setAllSummaries(all);
@@ -190,6 +201,31 @@ export default function CountryPage()
                             </li>
                         ))}
                     </ul>
+
+                    {/* Related Countries by Region */}
+                    {allSummaries.length > 0 && (
+                        <div className="mt-10">
+                            <h2 className="text-xl font-semibold mb-2">Other Countries in {summary.region}</h2>
+                            <ul className="list-disc list-inside text-blue-500">
+                                {shuffleArray(
+                                    allSummaries.filter(
+                                        (c) => c.country !== countryName && c.region === summary.region
+                                    )
+                                )
+                                    .slice(0, 5)
+                                    .map((c) => (
+                                        <li key={c.country}>
+                                            <a
+                                                href={`/${c.country.toLowerCase().replace(/\s+/g, "-")}`}
+                                                className="hover:underline"
+                                            >
+                                                {c.country}
+                                            </a>
+                                        </li>
+                                    ))}
+                            </ul>
+                        </div>
+                    )}
                 </>
             ) : (
                 <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-5 mt-4">
